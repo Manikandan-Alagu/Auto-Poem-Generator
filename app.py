@@ -425,6 +425,3 @@ elif img_upload:
 # Remove temporary image file
 if img_url or img_upload:
     os.remove('tmp.jpg')
-
-
-
