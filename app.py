@@ -389,7 +389,7 @@ def predict(term_col, poem_col):
     poem_col.markdown('#### Generated Poem:')
     poem_col.markdown('<div class="poem-container">', unsafe_allow_html=True)
     for line in poem_lines:
-        poem_col.markdown(f'<div class="poem-line" style="color: #FF4500; background-color: #ADD8E6; padding: 5px; margin-bottom: 5px; font-family: \'Palatino Linotype\', \'Book Antiqua\', Palatino, serif;">{line}</div>', unsafe_allow_html=True)
+        poem_col.markdown(f'<div class="poem-line" style="color: black; background-color: light grey; padding: 5px; margin-bottom: 5px; font-family: \'Palatino Linotype\', \'Book Antiqua\', Palatino, serif;">{line}</div>', unsafe_allow_html=True)
     poem_col.markdown('</div>', unsafe_allow_html=True)
 
 
