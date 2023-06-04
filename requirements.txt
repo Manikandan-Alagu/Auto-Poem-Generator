@@ -1,0 +1,10 @@
+numpy
+pandas
+pandas_stubs
+Pillow
+requests
+streamlit
+tensorflow
+altair
+poetpy
+nltk
