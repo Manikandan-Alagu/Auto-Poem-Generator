@@ -351,7 +351,7 @@ def extract_important_term(caption):
     stop_words = set(stopwords.words('english'))
     words = caption.lower().split()
     filtered_words = [word for word in words if word not in stop_words]
-
+    filtered_words = [word for word in filtered_words if re.match(r'^[a-zA-Z]+$', word)]
     # Find the longest word
     important_term = filtered_words
 
