@@ -369,7 +369,7 @@ def predict(term_col, poem_col):
     pred_caption = generate_caption('tmp.jpg', caption_model)
     
     # Generate poem using poetpy
-    poem_lines = generate_poem(pred_caption, num_lines=10)
+    poem_lines = generate_poem(pred_caption, 10)
 
     # Display the poem
     poem_col.markdown('#### Generated Poem:')
