@@ -345,17 +345,6 @@ def get_model():
 
 caption_model = get_model()
 
-@st.cache_data
-def extract_important_term(caption):
-    # Remove stopwords
-    stop_words = set(stopwords.words('english'))
-    words = caption.lower().split()
-    filtered_words = [word for word in words if word not in stop_words]
-
-    # Find the longest word
-    important_term = max(filtered_words, key=len)
-
-    return important_term
 
 
 def generate_poem(word, num_lines):
@@ -378,19 +367,17 @@ def generate_poem(word, num_lines):
 
 def predict(term_col, poem_col):
     pred_caption = generate_caption('tmp.jpg', caption_model)
-    # Extract the important term
-    important_term = extract_important_term(pred_caption)
     
     # Generate poem using poetpy
-    poem_lines = generate_poem(important_term, num_lines=10)
+    poem_lines = generate_poem(pred_caption, num_lines=10)
 
     # Display the poem
-    
     poem_col.markdown('#### Generated Poem:')
     poem_col.markdown('<div class="poem-container">', unsafe_allow_html=True)
     for line in poem_lines:
         poem_col.markdown(f'<div class="poem-line" style="color: black; background-color: light grey; padding: 5px; margin-bottom: 5px; font-family: \'Palatino Linotype\', \'Book Antiqua\', Palatino, serif;">{line}</div>', unsafe_allow_html=True)
     poem_col.markdown('</div>', unsafe_allow_html=True)
+
 
 
    
