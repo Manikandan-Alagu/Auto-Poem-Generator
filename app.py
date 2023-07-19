@@ -9,8 +9,6 @@ import numpy as np
 import streamlit as st
 import requests
 import nltk
-import string
-from collections import Counter
 from PIL import Image
 from poetpy import get_poetry
 from nltk.corpus import stopwords
@@ -349,15 +347,13 @@ caption_model = get_model()
 
 @st.cache_data
 def extract_important_term(caption):
-    # Remove stopwords and punctuation
+    # Remove stopwords
     stop_words = set(stopwords.words('english'))
     words = caption.lower().split()
-    words = [word.strip(string.punctuation) for word in words if word not in stop_words]
+    filtered_words = [word for word in words if word not in stop_words]
 
-    # Count word frequencies
-    word_freq = Counter(words)
-    important_term = max(word_freq, key=word_freq.get)
-
+    # Find the longest word
+    important_term = max(filtered_words, key=len)
 
     return important_term
 
@@ -386,7 +382,7 @@ def predict(term_col, poem_col):
     important_term = extract_important_term(pred_caption)
     
     # Generate poem using poetpy
-    poem_lines = generate_poem(extract_important_term, num_lines=10)
+    poem_lines = generate_poem(important_term, num_lines=10)
 
     # Display the poem
     
