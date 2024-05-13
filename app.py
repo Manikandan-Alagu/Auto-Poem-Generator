@@ -318,7 +318,7 @@ def get_caption_model():
         cnn_model=cnn_model, encoder=encoder, decoder=decoder, image_aug=None,
     )
 
-    def call_fn(batch, training):
+    def call_fn(batch, training=True):
         return batch
 
     caption_model.call = call_fn
